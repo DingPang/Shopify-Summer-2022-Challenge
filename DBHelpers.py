@@ -54,20 +54,23 @@ INSERT_ITEM = '''
 
 GET_ALL_STORAGES = '''
     SELECT S_Id, Name, Street1, Street2, City, State, ZIP
-    FROM Storages S;
+    FROM Storages S
+    ORODER BY S_Id;
 '''
 
 GET_ONE_STORAGE = '''
     SELECT Part_Id, Name, Stock
     FROM Parts P
-    WHERE P.S_Id = %s;
+    WHERE P.S_Id = %s
+    ORODER BY Part_Id;
 '''
 
 GET_ALL = '''
     SELECT S.S_Id, S.Name, S.Street1, S.Street2, S.City, S.State, S.ZIP, P.Part_Id, P.Name, P.Stock
     FROM Parts P
     JOIN Storages S
-    ON P.S_Id = S.S_Id;
+    ON P.S_Id = S.S_Id
+    O;
 '''
 
 ##################
