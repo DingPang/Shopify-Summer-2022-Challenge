@@ -1,3 +1,4 @@
+DATABASEURI = "postgresql://postgres:8895@34.145.157.1/postgres"
 
 def get_first(cursor):
     result = None
@@ -71,7 +72,7 @@ GET_ALL = '''
     FROM Parts P
     JOIN Storages S
     ON P.S_Id = S.S_Id
-    O;
+    ORDER BY P.Part_Id;
 '''
 
 ##################
