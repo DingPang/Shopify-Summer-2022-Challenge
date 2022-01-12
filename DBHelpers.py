@@ -1,4 +1,3 @@
-DATABASEURI = "postgresql://postgres:8895@34.145.157.1/postgres"
 
 def get_first(cursor):
     result = None
