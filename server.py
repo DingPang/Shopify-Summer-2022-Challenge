@@ -154,10 +154,9 @@ def removeoneitem():
         resp = make_response(redirect("/viewonestorage"))
         return resp
     except:
-        # flash("An error has occured, Please try again")
-        # resp = make_response(redirect("/viewonestorage"))
-        # return resp
-        pass
+        flash("An error has occured, Please try again")
+        resp = make_response(redirect("/viewonestorage"))
+        return resp
 
 # View
 @app.route('/viewonestorage', methods=["POST", "GET"])

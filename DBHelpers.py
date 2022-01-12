@@ -71,7 +71,7 @@ GET_ALL = '''
     FROM Parts P
     JOIN Storages S
     ON P.S_Id = S.S_Id
-    ORDER BY P.Part_Id;
+    ORDER BY S.S_Id, P.Part_Id;
 '''
 
 ##################
