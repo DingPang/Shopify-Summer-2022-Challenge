@@ -1,0 +1,88 @@
+
+
+{% extends "layout.html" %}
+
+<style>
+  body{
+    font-size: 15pt;
+    font-family: arial;
+  }
+</style>
+
+
+{% block body %}
+  <h2> Storages </h2>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Street1</td>
+            <td>Street2</td>
+            <td>City</td>
+            <td>State</td>
+            <td>ZIP</td>
+        </tr>
+        {% for c in storages %}
+        <tr>
+            {% for i in c %}
+            <td>{{i}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <a href = "./viewall">View Everything at once</a>
+    <br></br>
+    <a href = "{{ url_for('downloadstoragescsv') }}">Download this page as CSV</a>
+    <br></br>
+
+    <div> View a storage
+    <form method = "POST" action = "viewonestorage">
+      <select type="text" name="Storage">
+        {% for c in storages %}
+        <option value = "{{c[0]}} {{c[1]}}">{{c[1]}}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="view"></p>
+    </form>
+    </div>
+
+    <div> Edit a storage
+      <form method = "POST" action = "editonestorage">
+        <select type="text" name="Storage">
+          {% for c in storages %}
+          <option value = "{{c[0]}} {{c[1]}}">{{c[1]}}</option>
+          {% endfor %}
+        </select>
+        <input type = "text" name = "Name" placeholder="Name"></input>
+        <input type = "text" name = "Street1" placeholder="Street1"></input>
+        <input type = "text" name = "Street2" placeholder="Street2"></input>
+        <input type = "text" name = "City" placeholder="City"></input>
+        <input type = "text" name = "State" placeholder="State"></input>
+        <input type = "text" name = "ZIP" placeholder="ZIP"></input>
+        <input type="submit" value="edit"></p>
+      </form>
+    </div>
+
+    <div> Add a storage
+      <form method = "POST" action = "addonestorage">
+        <input type = "text" name = "Name" placeholder="Name"></input>
+        <input type = "text" name = "Street1" placeholder="Street1"></input>
+        <input type = "text" name = "Street2" placeholder="Street2"></input>
+        <input type = "text" name = "City" placeholder="City"></input>
+        <input type = "text" name = "State" placeholder="State"></input>
+        <input type = "text" name = "ZIP" placeholder="ZIP"></input>
+        <input type="submit" value="add"></p>
+      </form>
+    </div>
+
+    <div> Remove a storage
+      <form method = "POST" action = "removeonestorage">
+        <select type="text" name="Storage">
+          {% for c in storages %}
+          <option value = "{{c[0]}} {{c[1]}}">{{c[1]}}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Remove"></p>
+      </form>
+    </div>
+{% endblock %}

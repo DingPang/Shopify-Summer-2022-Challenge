@@ -1,0 +1,35 @@
+
+
+{% extends "layout.html" %}
+
+<style>
+  body{
+    font-size: 15pt;
+    font-family: arial;
+  }
+</style>
+
+
+{% block body %}
+    {% for j in Storages %}
+        <h2> Storage Name: {{j}}</h2>
+        <h2> Address: {{Storages[j]['address']}} </h2>
+        <table>
+            <tr>
+                <td>Part_Id</td>
+                <td>Name</td>
+                <td>Amount</td>
+            </tr>
+            {% for c in Storages[j]['inventory'] %}
+            <tr>
+                {% for i in c %}
+                <td>{{i}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% endfor %}
+    <a href = "{{ url_for('downloadallcsv') }}">Download this page as CSV</a>
+    <br></br>
+    </div>
+{% endblock %}

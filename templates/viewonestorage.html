@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+<style>
+  body{
+    font-size: 15pt;
+    font-family: arial;
+  }
+</style>
+
+
+{% block body %}
+  <h2> Inventory: {{Name}}</h2>
+  <table>
+        <tr>
+            <td>Part_Id</td>
+            <td>Name</td>
+            <td>Amount</td>
+        </tr>
+        {% for c in inventory %}
+        <tr>
+            {% for i in c %}
+            <td>{{i}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <a href = "{{ url_for('downloadstoragecsv') }}">Download this page as CSV</a>
+    <br></br>
+    <a href = "../">Main Page</a>
+    <br></br>
+
+
+    <div> Edit an item
+      <form method = "POST" action = "editoneitem">
+        <select type="text" name="Item">
+          {% for c in inventory %}
+          <option value = "{{c[0]}} {{c[1]}}">{{c[1]}}</option>
+          {% endfor %}
+        </select>
+        <input type = "text" name = "Name" placeholder="Name"></input>
+        <input type = "text" name = "Stock" placeholder="Stock"></input>
+        <input type="submit" value="edit"></p>
+      </form>
+    </div>
+
+    <div> Add an item
+      <form method = "POST" action = "addoneitem">
+        <input type = "text" name = "Name" placeholder="Name"></input>
+        <input type = "text" name = "Stock" placeholder="Stock"></input>
+        <input type="submit" value="add"></p>
+      </form>
+    </div>
+
+    <div> Remove an item
+      <form method = "POST" action = "removeoneitem">
+        <select type="text" name="Item">
+          {% for c in inventory %}
+          <option value = "{{c[0]}} {{c[1]}}">{{c[1]}}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Remove"></p>
+      </form>
+    </div>
+</body>
+
+{% endblock %}

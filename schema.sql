@@ -1,0 +1,24 @@
+/*
+Author: Ding pang
+Type: PSQL
+DROP TABLE Storages, Parts;
+*/
+CREATE TABLE Storages(
+    S_Id INTEGER,
+    Name VARCHAR(1000) NOT NULL UNIQUE,
+    Street1 VARCHAR(1000) NOT NULL,
+    Street2 VARCHAR(1000),
+    City VARCHAR(1000) NOT NULL,
+    State VARCHAR(1000) NOT NULL,
+    ZIP VARCHAR(1000) NOT NULL,
+    PRIMARY KEY(S_Id)
+);
+
+CREATE TABLE Parts(
+    S_Id INTEGER,
+    Part_Id INTEGER,
+    Name VARCHAR(1000) NOT NULL,
+    Stock INTEGER   CHECK(Stock >= 0),
+    PRIMARY KEY(S_Id, Part_Id),
+    FOREIGN KEY (S_Id) REFERENCES Storages ON DELETE CASCADE
+);
