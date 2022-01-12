@@ -1,3 +1,4 @@
+
 def get_first(cursor):
     result = None
     for e in cursor:
@@ -55,14 +56,14 @@ INSERT_ITEM = '''
 GET_ALL_STORAGES = '''
     SELECT S_Id, Name, Street1, Street2, City, State, ZIP
     FROM Storages S
-    ORODER BY S_Id;
+    ORDER BY S_Id;
 '''
 
 GET_ONE_STORAGE = '''
     SELECT Part_Id, Name, Stock
     FROM Parts P
     WHERE P.S_Id = %s
-    ORODER BY Part_Id;
+    ORDER BY Part_Id;
 '''
 
 GET_ALL = '''
